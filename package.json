@@ -1,6 +1,6 @@
 {
   "name": "proj4geojson",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "transform geojson",
   "main": "index.js",
   "scripts": {
