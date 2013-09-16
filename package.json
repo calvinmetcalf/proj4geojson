@@ -1,0 +1,27 @@
+{
+  "name": "proj4geojson",
+  "version": "0.0.1",
+  "description": "transform geojson",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/calvinmetcalf/proj4geojson.git"
+  },
+  "keywords": [
+    "proj4",
+    "geojson",
+    "geo",
+    "gis"
+  ],
+  "author": "Calvin Metcalf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calvinmetcalf/proj4geojson/issues"
+  },
+  "devDependencies": {
+    "proj4js": "~1.3.4"
+  }
+}
