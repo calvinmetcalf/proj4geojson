@@ -1,4 +1,4 @@
-var proj4 = require('proj4js');
+var proj4 = require('proj4');
 
 
 function transformGeojson(func){
