@@ -2,8 +2,17 @@
 var proj4 = require('proj4');
 
 
-function TransformGeojson(func){
-    this.func = func;
+function TransformGeojson(srs, forward){
+  var trans = proj4(srs);
+  if (forward) {
+    this.func = function(c){
+        return trans.forward(c);
+    };
+  } else {
+    this.func = function (c) {
+      return trans.inverse(c);
+    };
+  }
 }
 TransformGeojson.prototype.point = function(coord){
         return this.func(coord);
@@ -80,17 +89,11 @@ TransformGeojson.prototype.featureCollection = function(fc){
 };
 
 function toWGS84(geojson, srs){
-    var trans = proj4(srs);
-    var tFunc = new TransformGeojson(function(c){
-        return trans.inverse(c);
-    });
+    var tFunc = new TransformGeojson(srs, false);
     return tFunc.featureCollection(geojson);
 }
 function fromWGS84(geojson, srs){
-    var trans = proj4(srs);
-    var tFunc = new TransformGeojson(function(c){
-        return trans.forward(c);
-    });
+    var tFunc = new TransformGeojson(srs, true);
     return tFunc.featureCollection(geojson);
 }
 module.exports = exports = TransformGeojson;
